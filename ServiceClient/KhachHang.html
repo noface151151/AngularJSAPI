@@ -1,0 +1,89 @@
+﻿<div class="single-product-area" ng-controller="KhachHangController">
+    <div class="container" ng-hide="message1">
+        <h2 class="sidebar-title">{{message}}</h2>
+    </div>
+    <div class="container" ng-show="message1">
+        <div class="row">
+        <!--   <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản phẩm đã xem</h2>
+                    <div class="thubmnail-recent" ng-repeat="sanphamdaxem in sanphamdaxems">
+                        <img ng-src="http://localhost:4443/image/get?imageName={{sanphamdaxem.HinhAnh}}" class="recent-thumb" alt="">
+                        <h2><a href="/ProductDetail/{{sanphamdaxem.id}}">{{sanphamdaxem.Tensanpham}}</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins id="currency-no-fractions">{{sanphamdaxem.gia | currency:"":0}} VNĐ</ins>
+                        </div>
+                    </div>
+                    <!--<div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                </div>
+            </div>--> 
+
+            <div class="col-md-12">
+                <div class="product-content-right">
+                    <div class="woocommerce">
+                        <h2 class="sidebar-title">Các đơn hàng của bạn</h2>
+                        <form method="post">
+                            <table cellspacing="0" class="shop_table cart">
+                                <thead>
+                                    <tr>
+                                       
+                                        <th class="product-name">Người nhận</th>
+                                        <th class="product-price">Địa chỉ giao</th>       
+                                        <th class="product-subtotal">Ngày giao</th>
+                                        <th class="product-subtotal">Tổng tiền</th>
+                                        <th class="product-subtotal">Trạng thái</th>
+                                        <th class="product-remove">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart_item" ng-repeat="donhang in donhangs">
+                                       
+                                        <td class="product-price">
+                                            <span>{{donhang.NguoiNhan}}</span>
+                                        </td>
+                                        <td class="product-price">
+                                            <span>{{donhang.DiaChiGiao}}</span>
+                                        </td>
+                                        <td class="product-price">
+                                            <span>{{donhang.NgayGiaodate|date:'dd/MM/yyyy'}}</span>
+                                        </td>                          
+                                        <td class="product-subtotal">
+                                            <span class="amount" id="currency-no-fractions">{{donhang.TongTien | currency:"":0}} VNĐ</span>
+                                        </td>
+                                        <td class="product-price">
+                                            <span>{{donhang.TrangThai}}</span>
+                                        </td>
+                                        <td class="product-remove">
+                                            <a title="Chi tiết đơn hàng" class="remove" ng-click="chitietdonhang(donhang.Id)" style="cursor:pointer"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

@@ -1,0 +1,24 @@
+﻿<div class="single-product-area" ng-controller="ProductByCatController">
+    <h2 ng-hide="Productsfilter" class="sidebar-title" style="margin-left:20px">Không có sản phẩm</h2>
+    <div class="container" ng-show="Productsfilter">
+        <div class="row">
+            <div class="col-md-3 col-sm-6" ng-repeat="sanpham in Productsfilter" style="margin-bottom:10px">
+                <div class="single-product">
+                    <div class="product-f-image">
+                        <img ng-src="http://localhost:4443/image/get?imageName={{sanpham.HinhAnh}}" alt="">
+                        <div class="product-hover">
+                            <a style="cursor:pointer" ng-click="addtoCart(sanpham.Id,sanpham.TenSanPham,sanpham.Gia,sanpham.HinhAnh)" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm giỏ hàng</a>
+                            <a href="/ProductDetail/{{sanpham.Id}}" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                        </div>
+                    </div>
+                    <h2><a href="#">{{sanpham.TenSanPham}}</a></h2>
+                    <div class="product-carousel-price">
+                        <ins id="currency-no-fractions">{{sanpham.Gia | currency:"":0}} VNĐ</ins> <!--<del>$999.00</del>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pagination uib-pagination ng-model="currentPage" items-per-page="numPerPage" total-items="sanphams.length" max-size="maxSize" boundary-links="true" previous-text="Trang trước" first-text="Trang đầu tiên" next-text="Trang tiếp theo" last-text="Trang cuối"></pagination>
+    </div>
+</div>
+

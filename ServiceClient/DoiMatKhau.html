@@ -1,0 +1,41 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Đổi mật khẩu</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form id="login-form-wrap" class="login collapse" method="post" name="ChangePass" style="display:block;background:none">
+        <p class="form-row form-row-last">
+            <label for="password">
+                Mật khẩu cũ <span class="required">*</span>
+            </label>
+            <input type="password" id="password" name="oldpassword" class="input-text" ng-model="oldpassword">
+            <span ng-show="ChangePass.oldpassword.$error.required" class="text-danger">Mật khẩu cũ không được để trống</span>
+        </p>
+        <p class="form-row form-row-last">
+            <label for="password">
+                Mật khẩu mới<span class="required">*</span>
+            </label>
+            <input type="password" id="password" name="newpassword" class="input-text" ng-model="newpassword" required ng-minlength="6" ng-maxlength="32">
+            <span ng-show="ChangePass.newpassword.$dirty&&Login.newpassword.$error.required" class="text-danger">Mật khẩu không được để trống</span>
+            <span ng-show="ChangePass.newpassword.$dirty&&Login.newpassword.$error.minlength" class="text-danger">Mật khẩu ít nhất có 6 ký tự</span>
+            <span ng-show="ChangePass.newpassword.$dirty&&Login.newpassword.$error.maxlength" class="text-danger">Mật khẩu nhiều nhất có 32 ký tự</span>
+        </p>
+        <div class="clear"></div>
+        <p class="form-row form-row-last">
+            <label for="password">
+                Xác nhận mật khẩu mới <span class="required">*</span>
+            </label>
+            <input type="password" id="password" name="confirmpassword" class="input-text" ng-model="confirmpassword" data-password-verify="newpassword" required>
+            <span ng-show="ChangePass.confirmpassword.$error.passwordVerify" class="text-danger">Mật khẩu xác nhận không đúng</span>
+        </p>
+        <div class="clear"></div>
+
+        <p class="form-row">
+            <input type="button" value="Đổi mật khẩu" name="login" class="btn btn-primary" ng-disabled="Login.$invalid" ng-click="">
+
+        </p>
+        <div class="clear"></div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="quit()">Thoát</button>
+</div>

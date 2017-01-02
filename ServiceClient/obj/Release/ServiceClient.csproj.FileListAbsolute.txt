@@ -1,0 +1,6 @@
+E:\visual 2013\ServiceClient\ServiceClient\bin\ServiceClient.dll.config
+E:\visual 2013\ServiceClient\ServiceClient\bin\ServiceClient.dll
+E:\visual 2013\ServiceClient\ServiceClient\bin\ServiceClient.pdb
+E:\visual 2013\ServiceClient\ServiceClient\obj\Release\ServiceClient.csprojResolveAssemblyReference.cache
+E:\visual 2013\ServiceClient\ServiceClient\obj\Release\ServiceClient.dll
+E:\visual 2013\ServiceClient\ServiceClient\obj\Release\ServiceClient.pdb

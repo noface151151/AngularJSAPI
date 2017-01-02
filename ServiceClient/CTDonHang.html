@@ -1,0 +1,45 @@
+﻿<div class="product-content-right">
+    <div class="woocommerce">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Chi tiết đơn hàng</h3>
+        </div>
+        <form method="post">
+            <table cellspacing="0" class="shop_table cart">
+                <thead>
+                    <tr>
+
+                        <th class="product-name">Hình ảnh</th>
+                        <th class="product-price">Tên sản phẩm</th>
+                        <th class="product-subtotal">Số lượng</th>
+                        <th class="product-subtotal">Đơn giá</th>
+                        <th class="product-subtotal">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cart_item" ng-repeat="ctdonhang in ctdonhangs">
+
+                        <td class="product-thumbnail">
+                            <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" ng-src="http://localhost:4443/image/get?imageName={{ctdonhang.HinhAnh}}"></a>
+                        </td>
+                        <td class="product-price">
+                            <span>{{ctdonhang.SanPham}}</span>
+                        </td>
+                        <td class="product-price">
+                            <span>{{ctdonhang.SoLuong}}</span>
+                        </td>
+                        <td class="product-subtotal">
+                            <span class="amount" id="currency-no-fractions">{{ctdonhang.DonGia | currency:"":0}} VNĐ</span>
+                        </td>
+                        <td class="product-price">
+                            <span class="amount" id="currency-no-fractions">{{ctdonhang.GiamoiSp | currency:"":0}} VNĐ</span>
+                        </td>                     
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="quit()">Thoát</button>
+</div>

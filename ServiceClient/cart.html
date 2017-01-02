@@ -1,0 +1,97 @@
+﻿<div class="single-product-area" ng-controller="cartController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản phẩm đã xem</h2>
+                    <div class="thubmnail-recent" ng-repeat="sanphamdaxem in sanphamdaxems track by $index">
+                        <img ng-src="http://localhost:4443/image/get?imageName={{sanphamdaxem.HinhAnh}}" class="recent-thumb" alt="">
+                        <h2><a href="/ProductDetail/{{sanphamdaxem.id}}">{{sanphamdaxem.Tensanpham}}</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins id="currency-no-fractions">{{sanphamdaxem.gia | currency:"":0}} VNĐ</ins>
+                        </div>
+                    </div> 
+                    <!--<div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>
+                    <div class="thubmnail-recent">
+                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins>$700.00</ins> <del>$800.00</del>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="woocommerce">
+                        <h2 class="sidebar-title">Giỏ hàng của bạn</h2>
+                        <form method="post">
+                            <table cellspacing="0" class="shop_table cart">
+                                <thead>
+                                    <tr>
+                                        <th class="product-remove">&nbsp;</th>
+                                        <th class="product-thumbnail">&nbsp;</th>
+                                        <th class="product-name">Sản phẩm</th>
+                                        <th class="product-price">Giá</th>
+                                        <th class="product-quantity">Số lượng</th>
+                                        <th class="product-subtotal">Tổng tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart_item" ng-repeat="sanphamgiohang in sanphamgiohangs">
+                                        <td class="product-remove">
+                                            <a title="Xóa sản phẩm khỏi giỏ hàng" class="remove" ng-click="delete(sanphamgiohang.id)" style="cursor:pointer">×</a>
+                                        </td>
+                                        <td class="product-thumbnail">
+                                            <a href="/ProductDetail/{{sanphamgiohang.id}}"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" ng-src="http://localhost:4443/image/get?imageName={{sanphamgiohang.HinhAnh}}"></a>
+                                        </td>
+                                        <td class="product-name">
+                                            <a href="/ProductDetail/{{sanphamgiohang.id}}">{{sanphamgiohang.Tensanpham}}</a>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="amount" id="currency-no-fractions">{{sanphamgiohang.gia | currency:"":0}} VNĐ</span>
+                                        </td>
+                                        <td class="product-quantity">
+                                            <div class="quantity buttons_added">
+
+                                                <input type="number" id="myNumber" size="4" class="input-text qty text" title="Qty" value="1" min="1" step="1" ng-model="sanphamgiohang.soluong" ng-change="edit(sanphamgiohang.id)">
+
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="amount" id="currency-no-fractions">{{tienMoiSP(sanphamgiohang.id) | currency:"":0}} VNĐ</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" style="text-align:right" id="currency-no-fractions"> Tổng cộng: {{tongtien | currency:"":0}} VNĐ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="actions" colspan="6">
+                                           
+                                            <a href="Thanhtoan" class="btn btn-success">Tiến hành thanh toán</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

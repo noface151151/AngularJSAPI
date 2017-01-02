@@ -1,0 +1,186 @@
+﻿<div class="single-product-area" ng-controller="ThanhtoanController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản phẩm đã xem</h2>
+                    <div class="thubmnail-recent" ng-repeat="sanphamdaxem in sanphamdaxems track by $index">
+                        <img ng-src="http://localhost:4443/image/get?imageName={{sanphamdaxem.HinhAnh}}" class="recent-thumb" alt="">
+                        <h2><a href="/ProductDetail/{{sanphamdaxem.id}}">{{sanphamdaxem.Tensanpham}}</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins id="currency-no-fractions">{{sanphamdaxem.gia | currency:"":0}} VNĐ</ins>
+                        </div>
+                    </div> 
+                    <!-- <div class="thubmnail-recent">
+                         <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                         <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                         <div class="product-sidebar-price">
+                             <ins>$700.00</ins> <del>$800.00</del>
+                         </div>
+                     </div>
+                     <div class="thubmnail-recent">
+                         <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                         <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                         <div class="product-sidebar-price">
+                             <ins>$700.00</ins> <del>$800.00</del>
+                         </div>
+                     </div>
+                     <div class="thubmnail-recent">
+                         <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                         <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                         <div class="product-sidebar-price">
+                             <ins>$700.00</ins> <del>$800.00</del>
+                         </div>
+                     </div>-->
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="woocommerce">
+                        <div class="woocommerce-info" ng-hide="nguoidung">
+                            Bạn chưa đăng nhập ? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click vào đây để đăng nhập</a>
+                        </div>
+                        <form id="login-form-wrap" class="login collapse" method="post" name="Login" ng-hide="nguoidung">
+
+
+                            <p class="form-row form-row-first">
+                                <label for="username">
+                                    Tên đăng nhập <span class="required">*</span>
+                                </label>
+                                <input type="text" id="username" name="username" class="input-text" ng-model="username" required>
+                                <span ng-show="Login.username.$invalid" class="text-danger">Tên đăng nhập không được để trống</span>
+                            </p>
+                            <p class="form-row form-row-last">
+                                <label for="password">
+                                    Mật khẩu <span class="required">*</span>
+                                </label>
+                                <input type="password" id="password" name="password" class="input-text" ng-model="password" required>
+                                <span ng-show="Login.password.$invalid" class="text-danger">Mật khẩu không được để trống</span>
+                            </p>
+                            <div class="clear"></div>
+
+                            <p class="form-row">
+                                <input type="button" value="Đăng nhập" name="login" class="button" ng-disabled="Login.$invalid" ng-click="dangnhap()">
+
+                            </p>
+                            <p class="lost_password">
+                                <a style="cursor:pointer" ng-click="dangky()">Tạo tài khoản</a>
+                            </p>
+                            <div class="clear"></div>
+                        </form>
+                        <form enctype="multipart/form-data" action="#" class="checkout" name="checkout">
+                            <div id="customer_details" class="col2-set" ng-show="nguoidung">
+                                <div>
+                                    <div class="woocommerce-billing-fields">
+                                        <h3>Thông tin giao hàng</h3>
+                                        <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                            <label class="" for="billing_first_name">
+                                                Tên người nhận <abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="" id="billing_first_name" name="nguoinhan" class="input-text" ng-model="nguoinhan" required>
+                                            <span ng-show="checkout.nguoinhan.$error.required" class="text-danger">Tên người nhận không được để trống</span>
+                                        </p>
+
+                                        <div class="clear"></div>
+                                        <p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
+                                            <label class="" for="billing_address_1">
+                                                Địa chỉ <abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="" id="billing_address_1" name="diachi" class="input-text" ng-model="diachi" required>
+                                            <span ng-show="checkout.diachi.$error.required" class="text-danger">Địa chỉ không được để trống</span>
+                                        </p>
+                                        <p id="billing_date" class="form-row form-row-wide address-field validate-required">
+                                            <label class="" for="billing_address_1">
+                                                Thời gian giao <abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            <div class="input-append">
+                                                <input id="datetimepicker4" type="text" ng-model="ngaygiao" name="ngaygiao" required />
+                                                <span ng-show="checkout.ngaygiao.$error.required" class="text-danger">Thời gian giao không được để trống</span>
+                                               
+                                            </div>
+                                        </p>
+
+                                        <div class="clear"></div>
+                                        <p id="billing_email_field" class="form-row form-row-first validate-required validate-email">
+                                            <label class="" for="billing_email">
+                                                Email <abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            <input type="email" value="" placeholder="" id="billing_email" name="email" class="input-text" ng-model="email" required>
+                                            <span ng-show="checkout.email.$error.required" class="text-danger">Email không được để trống</span>
+                                            <span ng-show="checkout.email.$error.email" class="text-danger">Email không hợp lệ</span>
+                                        </p>
+                                        <p id="billing_phone_field" class="form-row form-row-last validate-required validate-phone">
+                                            <label class="" for="billing_phone">
+                                                Số điện thoại <abbr title="required" class="required">*</abbr>
+                                            </label>
+                                            <input type="text" value="" placeholder="" id="billing_phone" name="sodienthoai" class="input-text" ng-model="sodienthoai" required ng-pattern="/^(0\d{9,10})$/">
+                                            <span ng-show="checkout.sodienthoai.$error.required" class="text-danger">Số diện thoại không được để trống</span>
+                                            <span ng-show="checkout.sodienthoai.$error.pattern" class="text-danger">Số diện thoại không không hợp lệ</span>
+                                        </p>
+                                        <div class="clear"></div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <h3 id="order_review_heading">Đặt hàng của bạn</h3>
+                            <div id="order_review" style="position: relative;">
+                                <table class="shop_table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Sản phẩm</th>
+                                            <th class="product-total">Tổng cộng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="cart_item" ng-repeat="sanphamgiohang in sanphamgiohangs">
+                                            <td class="product-name">
+                                                {{sanphamgiohang.Tensanpham}} <strong class="product-quantity">× {{sanphamgiohang.soluong}}</strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="amount" id="currency-no-fractions">{{tienMoiSP(sanphamgiohang.id) | currency:"":0}} VNĐ</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="shipping">
+                                            <th>Phí giao hàng</th>
+                                            <td>
+                                                Miễn phí
+                                                <input type="hidden" class="shipping_method" value="free_shipping" id="shipping_method_0" data-index="0" name="shipping_method[0]">
+                                            </td>
+                                        </tr>
+
+                                        <tr class="order-total">
+                                            <th>Tổng cộng đơn hàng</th>
+                                            <td><strong><span class="amount" id="currency-no-fractions"> Tổng cộng: {{tongtien | currency:"":0}} VNĐ</span></strong> </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                                <div id="payment">
+                                    <div class="form-row place-order" ng-show="nguoidung">
+                                        <input type="button" value="Đặt hàng" id="place_order" name="woocommerce_checkout_place_order" class="btn btn-primary" ng-click="dathang()" ng-disabled="checkout.$invalid">
+
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $.datetimepicker.setLocale('vi');
+    $('#datetimepicker4').datetimepicker({
+        timepicker: false,
+        format:'d/m/Y',
+        minDate:new Date()
+    });
+
+</script>

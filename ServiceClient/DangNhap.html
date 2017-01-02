@@ -1,0 +1,35 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Đăng nhập</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form id="login-form-wrap" class="login collapse" method="post" name="Login" style="display:block;background:none">
+
+        <p class="form-row form-row-first">
+            <label for="username">
+                Tên đăng nhập <span class="required">*</span>
+            </label>
+            <input type="text" id="username" name="username" class="input-text" ng-model="username" required>
+            <span ng-show="Login.username.$invalid" class="text-danger">Tên đăng nhập không được để trống</span>
+        </p>
+        <p class="form-row form-row-last">
+            <label for="password">
+                Mật khẩu <span class="required">*</span>
+            </label>
+            <input type="password" id="password" name="password" class="input-text" ng-model="password" required>
+            <span ng-show="Login.password.$invalid" class="text-danger">Mật khẩu không được để trống</span>
+        </p>
+        <div class="clear"></div>
+
+        <p class="form-row">
+            <input type="button" value="Đăng nhập" name="login" class="btn btn-primary" ng-disabled="Login.$invalid" ng-click="login()">
+
+        </p>
+        <p class="lost_password">
+            <a style="cursor:pointer" ng-click="dangky()">Tạo tài khoản</a>
+        </p>
+        <div class="clear"></div>
+    </form>
+</div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="quit()">Thoát</button>
+    </div>

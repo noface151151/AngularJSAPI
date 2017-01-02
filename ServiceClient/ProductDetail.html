@@ -1,0 +1,60 @@
+﻿<div class="single-product-area" ng-controller="ProductDetailController">
+    <h2 ng-hide="sanpham" class="sidebar-title" style="margin-left:20px">Không tồn tại sản phẩm</h2>
+    <div class="container" ng-show="sanpham">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Sản phẩm liên quan</h2>
+                    <div class="thubmnail-recent" ng-repeat="sanphamlienquan in sanphamlienquans">
+                        <img ng-src="http://localhost:4443/image/get?imageName={{sanphamlienquan.HinhAnh}}" class="recent-thumb" alt="">
+                        <h2><a href="/ProductDetail/{{sanphamlienquan.Id}}">{{sanphamlienquan.TenSanPham}}</a></h2>
+                        <div class="product-sidebar-price">
+                            <ins id="currency-no-fractions">{{sanpham.Gia | currency:"":0}} VNĐ</ins>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img ng-src="http://localhost:4443/image/get?imageName={{sanpham.HinhAnh}}" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="product-inner">
+                                <h2 class="product-name">{{sanpham.TenSanPham}}</h2>
+                                <div class="product-inner-price">
+                                    <ins id="currency-no-fractions">{{sanpham.Gia | currency:"":0}} VNĐ</ins>
+                                </div>
+
+                                <form action="" class="cart">
+                                    <input class="add_to_cart_button" type="button" ng-click="addtoCart(sanpham.Id,sanpham.TenSanPham,sanpham.Gia,sanpham.HinhAnh)" value="Thêm Giỏ Hàng" />
+                                </form>
+                                <div>
+
+                                    <div>
+                                        <div class="tab-pane fade in active">
+                                            <h2>Mô tả</h2>
+                                            <p>{{sanpham.MoTa}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="ServiceClient">
+<head>
+    <base href="/" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop Thời Trang Online</title>
+
+    <!-- Google Fonts -->
+    <!-- Bootstrap -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="Content/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="Content/css/owl.carousel.css" rel="stylesheet" />
+    <link href="Content/css/style.css" rel="stylesheet" />
+    <link href="Content/css/responsive.css" rel="stylesheet" />
+    <link href="Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    
+</head>
+<body>
+
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="user-menu" ng-controller="IndexController">
+                        <ul>
+                            <li><a href="cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                            <li><a href="Thanhtoan"><i class="fa fa-check-square-o" aria-hidden="true"></i> Thanh toán</a></li>
+                            <li>
+                                <a style="cursor:pointer" ng-click="dangky()"><i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký</a>
+                            </li>
+                            <li ng-hide="nguoidung">
+                                <a style="cursor:pointer" ng-click="dangnhap()"><i class="fa fa-user"></i> Đăng nhập</a>
+                            </li>
+                            <li ng-show="nguoidung">
+                                <a href="KhachHang"><i class="fa fa-user"></i>Xin chào {{nguoidung}}</a>                              
+                            </li>
+                            <li ng-show="nguoidung">
+                                <a style="cursor:pointer" ng-click="logout()">Đăng xuất</a>
+                            </li>                       
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div> <!-- End header area -->
+
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="#"><span>Shop Quần Áo Online</span></a></h1>
+                    </div>
+                </div>
+
+                <div class="col-sm-6" ng-controller="cartController">
+                    <div class="shopping-item">
+                        <a href="/cart">Giỏ hàng: <span class="cart-amunt" id="currency-no-fractions">{{tongtien | currency:"":0}} VNĐ</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">{{tongsanpham}}</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
+    
+
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="menu" ng-controller="MenuController">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Trang chủ</a></li>
+                        <li>
+                            <a href="#">Sản phẩm</a>
+                            <ul id="submenu1" class="nav">
+                                <li ng-repeat="theloai in theloais" ng-mouseenter="hoverCategory(theloai.Id)">
+                                    <a href="ProductByCat/{{theloai.Id}}">{{theloai.TenTheLoai}}</a>
+                                    <ul class="nav">
+                                        <li ng-repeat="subtheloai in subtheloais">
+                                            <a href="ProductBySubCat/{{subtheloai.Id}}">{{subtheloai.TenTheLoaiSub}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <!--   <li>
+                                    <a href="/OtherProduct">Khác</a>
+                                    <ul class="nav">
+                                        <li ng-repeat="subtheloai in subtheloaiKhacs">
+                                            <a href="ProductBySubCat/{{subtheloai.Id}}">{{subtheloai.TenTheLoaiSub}}</a>
+                                        </li>
+                                    </ul>
+                                </li>--> 
+                            </ul>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
+    <!--Renderbody tu day-->
+
+    <ng-view></ng-view>
+
+
+
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="copyright">
+                        <p>&copy; Shop thời trang, thiết kế: <a href="#">Đỗ Ngọc Nam</a></p>
+                    </div>
+                </div>
+
+           
+            </div>
+        </div>
+    </div> <!-- End footer bottom area -->
+    <!-- Latest jQuery form server -->
+    <script src="Content/Script/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap JS form CDN -->
+    <script src="Content/Script/bootstrap.min.js"></script>
+    <!-- jQuery sticky menu -->
+    <script src="Content/Script/owl.carousel.min.js"></script>
+    <script src="Content/Script/jquery.sticky.js"></script>
+    <!-- jQuery easing -->
+    <script src="Content/Script/jquery.easing.1.3.min.js"></script>
+    <!-- Main Script -->
+    <script src="Content/Script/main.js"></script>
+  
+    <script src="Content/Script/angular.min.js"></script>
+    <script src="Content/Script/angular-route.min.js"></script>
+    <script src="Content/Script/ui-bootstrap-tpls-2.1.4.min.js"></script>
+    <script src="Content/Script/bootstrap-datetimepicker.min.js"></script>
+    <script src="Content/Script/jquery.datetimepicker.full.js"></script>
+    <script src="Content/Script/app.js"></script>
+
+    
+</body>
+</html>
